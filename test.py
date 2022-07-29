@@ -8,7 +8,12 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 @route('/pdf/<city_name>')
 def pdfTest(city_name):
     f = open('./myfile.tex', 'w', encoding='UTF-8')
-    datalist = ['\documentclass{jarticle}\n', '\\begin{document}\n', '$f(x)=e^{x^2}$', city_name, 'それではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまたそれではまた\n', '\end{document}\n']
+    datalist = [
+        '\documentclass{jarticle}\n',
+        '\\begin{document}\n',
+        '$f(x)=e^{x^2}$', city_name, 'またまた\n',
+        '\end{document}\n'
+    ]
     f.writelines(datalist)
     f.close()
     os.system('platex ./myfile.tex')
@@ -23,6 +28,8 @@ def send_img(filename):
 @error(404)
 def error404(error):
     return 'このページは存在しません。'
+
+def 
 
 if __name__ == "__main__":
     run(host='localhost', port=8080, reloader=True, debug=True)
